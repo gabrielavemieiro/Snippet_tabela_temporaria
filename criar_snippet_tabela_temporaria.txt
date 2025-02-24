@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>  
+<CodeSnippets  xmlns="https://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">  
+<_locDefinition xmlns="urn:locstudio">  
+    <_locDefault _loc="locNone" />  
+    <_locTag _loc="locData">Title</_locTag>  
+    <_locTag _loc="locData">Description</_locTag>  
+    <_locTag _loc="locData">Author</_locTag>  
+    <_locTag _loc="locData">ToolTip</_locTag>  
+   <_locTag _loc="locData">Default</_locTag>  
+</_locDefinition>  
+<CodeSnippet Format="1.0.0">  
+<Header>  
+	<Title>Tabela Temporaria</Title>  
+	<Shortcut></Shortcut>  
+	<Description>Cria uma tabela temporÃ¡ria padrÃ£o, global, sem definir o nome das colunas.</Description>  
+	<Author>Gabriela Vemieiro</Author>  
+	<SnippetTypes>  
+		<SnippetType>SurroundsWith</SnippetType>  
+	</SnippetTypes>  
+</Header>  
+<Snippet>  
+<Declarations>  
+	<Literal>  
+		<ID>Nome_Tabela_Temporaria</ID>  
+		<ToolTip>Nome da tabela temporÃ¡ria. Use um nome bem distinto, nÃ£o muito genÃ©rico.</ToolTip>  
+		<Default>ALTERE_AQUI_O_NOME_DA_TABELA_TEMPORARIA</Default>  
+	</Literal>   
+</Declarations>  
+<Code Language="SQL"><![CDATA[
+IF OBJECT_ID('tempdb..##$Nome_Tabela_Temporaria$') IS NOT NULL
+BEGIN
+	DROP TABLE ##$Nome_Tabela_Temporaria$
+END
+GO
+SELECT * INTO ##$Nome_Tabela_Temporaria$
+FROM
+( 
+	$selected$ $end$
+) AS Aux
+SELECT * FROM ##$Nome_Tabela_Temporaria$
+]]>  
+</Code>  
+</Snippet>  
+</CodeSnippet>  
+</CodeSnippets>
